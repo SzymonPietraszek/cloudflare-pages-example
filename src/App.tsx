@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 
 function App() {
-  const [secret, setSecret] = useState<string | null>(null);
+  const [msg, setMsg] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch("/secret")
+    fetch("/hello")
       .then((res) => res.json())
-      .then((data) => setSecret(data))
+      .then((data) => setMsg(data))
       .catch((err) => console.error(err));
   }, []);
 
   return (
     <div>
-      <h1>Secret:</h1>
-      <pre>{secret}</pre>
+      <h1>Hello:</h1>
+      <pre>{msg}</pre>
     </div>
   );
 }
