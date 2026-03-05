@@ -22,8 +22,6 @@ export const onRequest = async (context) => {
 
     const response = await signedFetch(backendUrl, {
         method: context.request.method,
-        headers: context.request.headers,
-        body: context.request.body
     });
 
     console.log("status:", response.status);
