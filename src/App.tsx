@@ -6,13 +6,13 @@ function App() {
   const [msg, setMsg] = useState<string | null>(null);
 
   const load = async () => {
-    const r = await fetch("/dynamo");
+    const r = await fetch("/api/dynamo");
     const j = await r.json();
     setData(j.data);
   };
 
   const send = async () => {
-    await fetch(`/dynamo?value=${encodeURIComponent(value)}`, {
+    await fetch(`/api/dynamo?value=${encodeURIComponent(value)}`, {
       method: "POST",
     });
     setValue("");
@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    fetch("/hello")
+    fetch("/api/hello")
       .then((res) => res.json())
       .then((resp) => setMsg(resp.message))
       .catch((err) => console.error(err));
